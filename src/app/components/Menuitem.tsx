@@ -54,6 +54,7 @@ const Menu = () => {
         setIsCheckout(true);
         router.push("/checkout");
     };
+    {isCheckout && <p className="text-lg text-green-600">Redirecting to checkout...</p>}
 
     const clearCart = () => {
         setCart([]);
@@ -132,12 +133,15 @@ const Menu = () => {
                                     </div>
 
                                     <div className="mt-6">
-                                        <button
-                                            onClick={goToCheckout}
-                                            className="bg-green-600 py-3 px-8 rounded-lg text-lg shadow-md hover:bg-green-700 transition duration-300 ease-in-out text-white transform hover:scale-110"
-                                        >
-                                            Proceed to Checkout
-                                        </button>
+                                    <button
+    onClick={goToCheckout}
+    className={`bg-green-600 py-3 px-8 rounded-lg text-lg shadow-md transition duration-300 ease-in-out text-white transform ${
+        isCheckout ? "opacity-50 cursor-not-allowed" : "hover:bg-green-700 hover:scale-110"
+    }`}
+    disabled={isCheckout} // Disable when redirecting
+>
+    {isCheckout ? "Processing..." : "Proceed to Checkout"}
+</button>
                                         <button
                                             onClick={clearCart}
                                             className="bg-red-600 py-3 px-8 ml-4 rounded-lg text-lg shadow-md hover:bg-red-700 transition duration-300 ease-in-out text-white transform hover:scale-110"
