@@ -54,7 +54,7 @@ const Menu = () => {
         setIsCheckout(true);
         router.push("/checkout");
     };
-    {isCheckout && <p className="text-lg text-green-600">Redirecting to checkout...</p>}
+  
 
     const clearCart = () => {
         setCart([]);
